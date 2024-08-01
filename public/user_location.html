@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Location via Email</title>
+</head>
+<body>
+    <h1>Share Your Location</h1>
+    
+    <button id="shareLocationButton">Share My Location via Email</button>
+    
+    <script>
+        document.getElementById('shareLocationButton').addEventListener('click', function() {
+            const recipientEmails = [
+                'anushajanga036@gmail.com',
+                'bharathbrave99@gmail.com',
+                'lakshmimudimela24@gmail.com',
+                'nsarathreddyavm@gmail.com'
+            ];
+
+            const subject = 'My Current Location';
+            let message = '';
+
+            // Attempt to get the user's location.
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        message = `My current location is https://maps.google.com/?q=${latitude},${longitude}`;
+                        sendEmail(recipientEmails, subject, message);
+                    },
+                    function(error) {
+                        console.error('Error getting location:', error);
+                        promptForLocation();
+                    },
+                    { timeout: 10000 } // Set a timeout in milliseconds
+                );
+            } else {
+                promptForLocation();
+            }
+
+            // Function to send the email.
+            function sendEmail(recipients, emailSubject, emailMessage) {
+                const emailTo = recipients.join(',');
+                const emailLink = `mailto:${encodeURIComponent(emailTo)}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailMessage)}`;
+                window.location.href = emailLink;
+            }
+
+            // Function to prompt the user for manual location entry.
+            function promptForLocation() {
+                const manualLocation = prompt('Geolocation failed. Please enter your location:');
+                if (manualLocation !== null) {
+                    message = `My current location is ${manualLocation}`;
+                    sendEmail(recipientEmails, subject, message);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

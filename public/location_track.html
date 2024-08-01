@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map with Location</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 570px;
+    }
+    .back
+        {
+            width: 100px;
+            transition: all 0.2 ease;
+            background-color: lightblue;
+            background-image: linear-gradient(#0dccea, #0d70ea);
+            border: 0;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            font-family: Montserrat,sans-serif;
+            font-size: .9em;
+            margin: 5px;
+            padding: 10px 15px;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .back:hover {
+            cursor: pointer;
+            transform: scale(0.96);
+        }
+  </style>
+</head>
+<body>
+  <div>
+    <label for="disasterSelect">Select Disaster Type:</label>
+    <select id="disasterSelect">
+      <option value="all">All</option>
+      <option value="natural">Natural Disasters</option>
+      <option value="manmade">Man-Made Disasters</option>
+      <option value="fire">Fire</option>
+    </select>
+  </div>
+  <div id="map"></div>
+  <button class="back" onclick="window.location.href='home.html';">Back<br></button>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    // Define icons for user location and vehicle
+    const yourLocationIcon = L.icon({
+      iconUrl: 'user.jpg', // Replace with the actual path to your user icon image
+      iconSize: [20, 20],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+    });
+
+    const vehicleIcon = L.icon({
+      iconUrl: 'vehicle.jpg', // Replace with the actual path to your vehicle icon image
+      iconSize: [20, 20],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+    });
+
+    // Define icons for highlighted user location and vehicle
+    const yourLocationIconHighlighted = L.icon({
+      iconUrl: 'user_high.jpg', // Replace with the path to your highlighted user icon
+      iconSize: [50, 50],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+    });
+
+    const vehicleIconHighlighted = L.icon({
+      iconUrl: 'vehicle_high.jpg', // Replace with the path to your highlighted vehicle icon
+      iconSize: [30, 30],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
+    });
+
+    const agencies = [
+    { lat: 13.5574, lon: 78.5033, name: 'vivekananda nagar fire station', disasterType: 'fire' },
+      { lat: 13.643213168647769, lon: 78.62835797761876, name: 'gurram konda fire station', disasterType: 'fire' },
+      { lat: 13.390156859585751, lon: 78.5813926842495, name: 'fire station', disasterType: 'fire' },
+      { lat: 13.390156859585751, lon: 78.5813926842495, name: 'fire station', disasterType: 'fire' },
+  { lat: 13.388606517234662, lon:  77.87620838458159 , name: 'sidlagatta fire station', disasterType: 'fire' },
+  { lat: 13.401303354795838, lon: 77.87346854255568, name: 'fire engine station', disasterType: 'fire' },
+  { lat: 13.219660186582319, lon: 79.10215890778349, name: 'chittoor fire station', disasterType: 'fire' },
+  { lat: 13.558993993710008, lon:  78.49882123656258 , name: 'flood agencies', disasterType: 'flood' },
+  { lat: 12.985415728092216, lon:  77.60891908035101 , name: 'flood agencies', disasterType: 'flood' },
+  { lat: 13.630502180108621, lon:  78.48414945005831  , name: 'flood agencies', disasterType: 'flood' },
+  { lat: 13.697262080271681, lon:  79.45128166854478, name: 'manmade agency', disasterType: 'industrial' },
+  { lat: 12.938304288058355,  lon: 77.59593466455749, name: 'manmade agency', disasterType: 'industrial' },
+    ];
+
+    const vehicles = [
+    { lat: 13.643213168647769, lon: 78.62835797761876, name: 'gurram konda fire station' },
+  { lat: 13.390156859585751, lon: 78.5813926842495, name: 'fire station' },
+  { lat: 13.388606517234662, lon:  77.87620838458159 , name: 'sidlagatta fire station' },
+  { lat: 13.401303354795838, lon: 77.87346854255568, name: 'fire engine station' },
+  { lat: 13.219660186582319, lon: 79.10215890778349, name: 'chittoor fire station' },
+  { lat: 13.558993993710008, lon:  78.49882123656258 , name: 'flood agencies' },
+  { lat: 12.985415728092216, lon:  77.60891908035101 , name: 'flood agencies' },
+  { lat: 13.630502180108621, lon:  78.48414945005831  , name: 'flood agencies' },
+  { lat: 13.697262080271681, lon:  79.45128166854478, name: 'manmade agency' },
+  { lat: 12.938304288058355,  lon: 77.59593466455749, name: 'manmade agency' },
+    ];
+
+    const map = L.map('map').setView([13.5574, 78.5033], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    let userLocationMarker;
+    function displayCurrentLocation() {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const { latitude, longitude } = position.coords;
+
+          if (userLocationMarker) {
+            userLocationMarker.setLatLng([latitude, longitude]);
+          } else {
+            userLocationMarker = L.marker([latitude, longitude], { icon: yourLocationIcon }).addTo(map)
+              .bindPopup('Your Current Location');
+          }
+        }, error => {
+          console.error('Error getting geolocation:', error.message);
+        });
+      } else {
+        alert("Geolocation is not available in this browser.");
+      }
+    }
+
+    function clearMap() {
+      map.eachLayer(layer => {
+        if (layer instanceof L.Marker && layer !== userLocationMarker) {
+          map.removeLayer(layer);
+        }
+      });
+    }
+
+    const disasterSelect = document.getElementById('disasterSelect');
+
+    disasterSelect.addEventListener('change', () => {
+      const selectedDisaster = disasterSelect.value;
+      clearMap();
+
+      switch (selectedDisaster) {
+        case 'natural':
+        case 'manmade':
+        case 'fire':
+          displayAgenciesAndVehicles(selectedDisaster);
+          break;
+        case 'all':
+          displayAllVehicles();
+          break;
+        default:
+          console.log('Invalid disaster type.');
+      }
+    });
+
+    function displayAgenciesAndVehicles(disasterType) {
+      let disasterTypesToShow = [];
+      switch (disasterType) {
+        case 'natural':
+          disasterTypesToShow = ['flood', 'tsunami', 'cyclone', 'earthquake'];
+          break;
+        case 'manmade':
+          disasterTypesToShow = ['industrial', 'nuclear', 'transportation', 'structural', 'oilspills'];
+          break;
+        case 'fire':
+          disasterTypesToShow = ['fire'];
+          break;
+        default:
+          console.log('Invalid disaster type.');
+          return;
+      }
+
+      const filteredAgencies = agencies.filter(agency => disasterTypesToShow.includes(agency.disasterType));
+      const filteredVehicles = vehicles;
+
+      let nearestAgency = null;
+      let nearestVehicle = null;
+      let nearestAgencyDistance = Infinity;
+      let nearestVehicleDistance = Infinity;
+
+      filteredAgencies.forEach(agency => {
+        const marker = L.marker([agency.lat, agency.lon]).addTo(map)
+          .bindPopup(`Agency: ${agency.name} (Disaster Type: ${agency.disasterType})`);
+
+        // Calculate the distance between user's location and agency location
+        const agencyDistance = map.distance(userLocationMarker.getLatLng(), marker.getLatLng());
+
+        // Check if this agency is closer than the current nearest one
+        if (agencyDistance < nearestAgencyDistance) {
+          nearestAgency = marker;
+          nearestAgencyDistance = agencyDistance;
+        }
+      });
+
+      filteredVehicles.forEach(vehicle => {
+        const marker = L.marker([vehicle.lat, vehicle.lon], { icon: vehicleIcon }).addTo(map)
+          .bindPopup(`Vehicle: ${vehicle.name}`);
+
+        // Calculate the distance between user's location and vehicle location
+        const vehicleDistance = map.distance(userLocationMarker.getLatLng(), marker.getLatLng());
+
+        // Check if this vehicle is closer than the current nearest one
+        if (vehicleDistance < nearestVehicleDistance) {
+          nearestVehicle = marker;
+          nearestVehicleDistance = vehicleDistance;
+        }
+      });
+
+      // Change the marker color of the nearest agency and vehicle
+      if (nearestAgency) {
+        nearestAgency.setIcon(yourLocationIconHighlighted);
+      }
+      if (nearestVehicle) {
+        nearestVehicle.setIcon(vehicleIconHighlighted);
+      }
+    }
+
+    function displayAllVehicles() {
+      vehicles.forEach(vehicle => {
+        const marker = L.marker([vehicle.lat, vehicle.lon], { icon: vehicleIcon }).addTo(map)
+          .bindPopup(`Vehicle: ${vehicle.name}`);
+      });
+      displayCurrentLocation();
+    }
+
+    // Call the function to display the user's location initially
+    displayCurrentLocation();
+
+    // Update the user's location periodically
+    setInterval(displayCurrentLocation, 10000); // Update every 10 seconds
+  </script>
+</body>
+</html>

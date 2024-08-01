@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Form</title>
+    <style>
+        body,html {
+           background-image:  linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .main {
+            background-color: #abddf3;
+            border: 2px solid #abddf3;
+            border-radius: 6px;
+            max-width: 390px;
+            margin: 50px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: 200px;
+            height: 190px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: larger;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+        input:active {
+            transform: scale(0.96);
+        }
+        #b1{
+          width: 120px;
+          border-radius: 6px;
+          margin-left: 14px;
+          cursor: pointer;
+          background-color: rgb(161, 164, 254);
+          border: rgb(161, 164, 254);
+        }
+        form button{
+          width: 120px;
+          border-radius: 6px;
+          height: 35px;
+          padding-right:10px;
+          margin-left: 80px;
+          cursor: pointer;
+          background-color:rgb(161, 164, 254);
+          border: rgb(161, 164, 254);
+        }
+        @media (max-width: 600px) {
+            .main {
+                margin: 20px;
+                padding: 10px;
+                max-width: none;
+                margin-left: 50px;
+                margin-right: 20px;
+                margin-top: 200px;
+                width: 280px;
+                height: 250px;
+            }
+            h1{
+                margin-bottom: 5px;
+            }
+            #b1{
+                margin-top:3px;
+                display: block;
+                margin-left:70px;
+               
+
+        
+            }
+            form button{
+                margin-left:70px;
+                margin-top: 3px;
+               
+            }
+            #b2{
+                margin-left:70px;
+                margin-top: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1 style="font-family: serif;">Are you willing to be a <b>volunteer</b>?</h1>
+        <br><br>
+        <form method="post" action="/allow"><input id="b1" type="button" value="Yes, of course" onclick="window.location.href='terms.html';">
+        <button id="b2" type="submit">Not Intrested</button></form>
+    </div>
+</body>
+</html>

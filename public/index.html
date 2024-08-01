@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+    <style>
+        body {
+            padding: 0px;
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+        }
+
+        .a {
+            background-color: whitesmoke;
+            border-radius: 10px;
+            width: 300px;
+            height: 300px;
+            display: block;
+            margin: auto;
+            background-color: rgb(224, 253, 253)
+        }
+
+        .a h2 {
+            margin-top: 20px;
+        }
+
+        .a button span {
+            display: block;
+            margin-right: auto;
+            background-color: rgba(166, 216, 228, 0.694);
+            width: 240px;
+            padding: 10px;
+            cursor: pointer;
+            border: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .a button:active {
+            transform: scale(0.96);
+        }
+
+        .z {
+            margin-top: 90px;
+            margin-bottom: 6px;
+            /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px; */
+            border-radius: 10px;
+        }
+
+        .y {
+            /* border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; */
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        button{
+            margin-left: 20px;
+            width: 260px;
+            align-items: center;
+            background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: flex;
+            font-family: Phantomsans, sans-serif;
+            font-size: 16px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 3px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        button:hover {
+            outline: 0;
+        }
+
+        button span {
+            background-color: rgb(5, 6, 45);
+            padding: 16px 24px;
+            border-radius: 6px;
+            width: 100%;
+            height: 100%;
+            transition: 300ms;
+        }
+
+        button:hover span {
+            background: none;
+        }
+
+        span {
+            color: black;
+        }
+
+        .logo {
+            font-size: 50px;
+            margin-top: 30px;
+        }
+
+        form button {
+            height: 2.6rem;
+            background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            margin-left: 20px;
+            width: 260px;
+            align-items: center;
+            background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
+            border: 0;
+            border-radius: 8px;
+            box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+            box-sizing: border-box;
+            color: #ffffff;
+            display: flex;
+            font-family: Phantomsans, sans-serif;
+            font-size: 16px;
+            justify-content: center;
+            line-height: 1em;
+            max-width: 100%;
+            min-width: 140px;
+            padding: 3px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width : 600px) {
+            .a {
+                margin-top: 50%;
+
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function fileclose() {
+            document.open();
+            document.close();
+        }
+    </script>
+    <center>
+        <div class="a" style="display:flex">
+            <div class="b">
+                <ion-icon class="logo" name="location-sharp"></ion-icon>
+                <h2>Access location ?</h2><br>
+                <form id="z" method="post" action="/confirm"><button type="submit" class="text">Allow</button></form><br>
+                <button class="y" onclick="fileclose()"><span class="text">Deny</span></button>
+            </div>
+        </div>
+    </center>
+    <!-- <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> -->
+</body>
+</html>

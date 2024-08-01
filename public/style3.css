@@ -1,0 +1,25 @@
+.butto input
+{
+    width: 300px;
+    padding: 20px;
+    background-color: rgb(140, 237, 237);
+    border: transparent;
+    border-radius: 10px;
+    display: block;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.butto input:active
+{
+    transform: scale(0.96);
+}
+.butto
+{
+    display: block;
+    margin-left: 500px;
+}
+p
+{
+    width: 300px;
+    margin-left: 500px;
+}

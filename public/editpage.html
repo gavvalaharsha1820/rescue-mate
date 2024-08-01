@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Data Storage Example</title>
+    <style>
+        body {
+            background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+            font-family: Arial, sans-serif;
+            background-color: #e4ebec;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: outset;
+            border-width: 3px;
+            border-right-width: 15px;
+            background-color: rgb(252, 251, 247);
+        }
+        
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="password"],
+        input[type="phone"],
+        input[type="date"] {
+            width: 80%;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 8px;
+        }
+        #bu {
+            text-align: center;
+            display: flex;
+        }
+        button {
+            width: 250px;
+            background: skyblue;
+            border: 1px solid skyblue;
+            border-radius: 6px;
+            box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+            box-sizing: border-box;
+            color: #ffffff;
+            cursor: pointer;
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 16px;
+            min-height: 40px;
+            outline: 0;
+            padding: 12px 14px;
+            text-align: center;
+            text-rendering: geometricprecision;
+            text-transform: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            vertical-align: middle;
+        }
+        
+        button:hover,
+        button:active {
+            background-color: initial;
+            background-position: 0 0;
+            color: skyblue;
+        }
+        
+        button:active {
+            opacity: .5;
+        }
+        
+        @media screen and (max-width: 600px) {
+            button[type="reset"],
+            button[type="submit"] {
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>EDIT DETAILS</h1>
+    <form id="userForm" action="/signup" method="post">
+        <label for="username">Name:</label>
+        <input type="text" id="username" name="name" placeholder="Enter your name" required><br>
+        <label>Gender :</label>
+        <div style="display: flex;">
+            &emsp;&emsp;&emsp;<input type="radio" id="male" required name="gender" value="MALE" required>
+            <label for="male">Male</label>&emsp;
+            <input type="radio" id="female" name="gender" value="FEMALE" required>
+            <label for="female">Female</label>&emsp;
+            <input type="radio" id="other" name="gender" value="OTHER" required>
+            <label for="other">Prefer not to say</label>
+        </div>
+        <label for="aadhar">Aadhar:</label>
+        <input type="number" id="aadhar"  name="aadhar"  min="100000000000" max="999999999999" pattern="[0-9]{10}"  placeholder="Enter Aadhar Number" required ><br>
+        <label for="phone">Phone Number:</label>
+        <input type="number" id="phone"  name="phone" min="1000000000" max="9999999999" pattern="[0-9]{10}" maxlength="10" placeholder="Enter Contact Number"  value="" required><br>
+        <label for="ephone1">Trusted Phone Number1:</label>
+        <input type="number" id="ephone1" name="ephone1" min="1000000000" max="9999999999" pattern="[0-9]{10}" placeholder="Enter emergency number" required ><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email"  name="mail" placeholder="id@gmail.com" required><br>
+        <label for="address">Village Name:</label>
+        <input type="text" id="village" name="village" placeholder="Enter village name" required><br>
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" placeholder="pincode" required><br>
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" placeholder="enter state" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="pass1" minlength="8" placeholder="Enter Password" required><br>
+        <label for="pass1">Confirm Password:</label>
+        <input type="password" id="pass1" name="pass2" minlength="8" placeholder="Confirm Password" required><br><br>
+        <div id="bu">
+            <button type="reset"><span class="text">Reset</span></button>&emsp;
+            <button id="submit" type="submit"><span  class="text" >Update</span></button>
+        </div>
+    </form>
+    <script>
+        var password = document.getElementById("password"),
+            pass1 = document.getElementById("pass1");
+
+        function validatePassword() {
+            if (password.value != pass1.value) {
+                pass1.setCustomValidity("Passwords Don't Match");
+            } else {
+                pass1.setCustomValidity('');
+            }
+        }
+        password.onchange = validatePassword;
+        pass1.onkeyup = validatePassword;
+        
+//         userForm.addEventListener("submit", async function (event) {
+//     event.preventDefault();
+//     try {
+//         fetch('/signup', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify(userForm)
+//             })
+//             .then(response => response.text())
+//             .then(message => {
+//                 console.log(message);
+//                 if(message === 'OTP sent successfully'){
+//                     window.location.href = 'otp.html';
+//                 }
+//     })
+//     } catch (error) {
+//         console.error('Error:', error);
+//         alert('An error occurred. Please try again later.');
+//     }
+// });
+
+        // userForm.addEventListener("submit", async function (event) {
+        //     event.preventDefault();
+        //     try {
+        //         const response = await fetch('/signup', {
+        //             method: 'POST',
+        //             body:
+        //         });
+        //         const result = await response.text();
+        //         alert(result);
+        //         if (response.ok) {
+        //             window.location.href = "otp.html";
+        //         }
+        //     } catch (error) {
+        //         console.error('Error:', error);
+        //         alert('An error occurred. Please try again later.');
+        //     }
+        // });
+    </script>
+</body>
+</html>

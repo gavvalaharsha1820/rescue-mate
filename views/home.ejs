@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(155deg, #8be9f1 10%, #cb7def 90%);
+    }
+
+    .head {
+        height: 100px;
+        background-color: lightblue;
+        border-radius: 5px 5px 5px 5px;
+        display: flex;
+        background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+
+    }
+
+    .logo {
+        height: 90px;
+        width: 90px;
+        margin-left: 10px;
+        margin-top: 5px;
+        border-radius: 45px;
+    }
+
+    .dis {
+        margin-right: 10%;
+        padding: 3px;
+        padding-left: 2%;
+        margin-top: 20px;
+        font-size: 50px;
+    }
+
+    .user {
+        height: 60px;
+        width: 60px;
+        margin-left: 450px;
+        margin-top: 23px;
+        border-radius: 45px;
+        cursor: pointer;
+    }
+
+    .location {
+        width: 200px;
+        height: 50px;
+        font-size: 20px;
+        margin-left: 10px;
+        align-self: center;
+        background-color: rgba(255, 255, 255, 0.333);
+        background-image: none;
+        background-position: 0 90%;
+        background-repeat: repeat no-repeat;
+        background-size: 4px 3px;
+        border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+        border-style: solid;
+        border-width: 2px;
+        box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+        box-sizing: border-box;
+        color: #41403e;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Neucha, sans-serif;
+        font-size: 1rem;
+        line-height: 23px;
+        outline: none;
+        padding: .75rem;
+        text-decoration: none;
+        transition: all 235ms ease-in-out;
+        border-bottom-left-radius: 15px 255px;
+        border-bottom-right-radius: 225px 15px;
+        border-top-left-radius: 255px 15px;
+        border-top-right-radius: 15px 225px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+
+    .location:hover {
+        box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+        transform: translate3d(0, 2px, 0);
+    }
+
+    .location:focus {
+        box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+    }
+
+    .loc {
+        display: flex;
+    }
+
+    .tar {
+        font-size: 100px;
+    }
+
+    .type {
+        padding: 0.6em 2em;
+        border: none;
+        outline: none;
+        color: rgb(255, 255, 255);
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 600px;
+        height: 80px;
+        margin-left: 30px;
+        font-size: 30px;
+    }
+
+    .type:before {
+        content: "";
+        background: linear-gradient(45deg,
+                #ff0000,
+                #ff7300,
+                #fffb00,
+                #48ff00,
+                #00ffd5,
+                #002bff,
+                #7a00ff,
+                #ff00c8,
+                #ff0000);
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing-button-85 20s linear infinite;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+    }
+
+    @keyframes glowing-button-85 {
+        0% {
+            background-position: 0 0;
+        }
+
+        50% {
+            background-position: 400% 0;
+        }
+
+        100% {
+            background-position: 0 0;
+        }
+    }
+
+    .type:after {
+        z-index: -1;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #222;
+        left: 0;
+        top: 0;
+        border-radius: 10px;
+    }
+
+    .victim {
+        height: 150px;
+        width: 150px;
+        border-radius: 76px;
+        background-color: rgb(253, 10, 10);
+        font-size: 20px;
+        margin-left: 30px;
+        margin-top: 50px;
+        font-size: 30px;
+        border: none;
+        border-radius: 1000px;
+        box-shadow: 12px 12px 24px rgba(79, 209, 197, .64);
+        transition: all 0.3s ease-in-out 0s;
+        cursor: pointer;
+        outline: none;
+        position: relative;
+
+    }
+
+    .type:hover {
+        border: 2px solid black;
+        background-color: rgba(222, 216, 201, 0.1);
+        cursor: grab;
+
+    }
+
+    .reference {
+
+        font-size: 30px;
+        margin-left: 50px;
+        position: block;
+        margin-top: 20px;
+        text-align: right;
+    }
+
+    .reference2 {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .victim:hover {
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        background-color: rgba(6, 239, 6, 0.7);
+        cursor: grabbing;
+    }
+
+    @media (max-width: 768px) {
+        .head {
+            align-items: center;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .dis {
+            font-size: 30px;
+            margin-right: 0px;
+        }
+
+        .tar {
+            margin-top: 10px;
+        }
+
+        .user {
+            margin-top: 5px;
+            margin-left: 0px;
+
+        }
+
+        .alert {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .location {
+            margin-top: 8px;
+        }
+
+        .loc {
+            margin-left: 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .type {
+            width: 100%;
+            margin-left: 0;
+            text-align: center;
+        }
+
+        .types {
+            margin: 10px;
+        }
+
+        .victim {
+            margin-left: 30%;
+            margin-top: 20px;
+            align-content: center;
+        }
+
+        .reference {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 0px;
+            display: block;
+            margin-left: auto;
+        }
+
+        .reference2 {
+            font-size: 20px;
+            display: block;
+            margin-left: auto;
+        }
+
+    }
+
+    @keyframes shake {
+
+        10%,
+        90% {
+            transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+            transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: translate3d(-4px, 0, 0);
+        }
+
+        40%,
+        60% {
+            transform: translate3d(4px, 0, 0);
+        }
+    }
+</style>
+
+<body>
+    <div class="main">
+        <div class="head">
+            <img src="logo.jpg" alt="logo" class="logo">
+            <h1 class="dis">Disater Management</h1>
+            <form method="post" action="/profile">
+                <button type="submit"><img src="user_icon.jpg" alt="user" class="user" id="user">
+                    <input type="text" name="myid" hidden  onclick="ClickHandler()">
+                </button>
+            </form>
+        </div>
+        <div class="loc">
+            <span class="tar"> &target;</span>
+            <button class="location" onclick="window.location.href='location_track.html';">
+                Track The Location</button>
+        </div>
+        <center>
+            <div class="types">
+                <button class="type" id="disasterTypeButton" onclick="window.location.href='disastypes.html';">Disaster
+                    Types</button>
+            </div>
+            <div class="alert">
+                <button class="victim" onclick="window.location.href='alert_page.html';">
+                    victim
+                </button>
+                <button class="victim" onclick="window.location.href='alert_page.html';">
+                    Inform
+                </button>
+            </div>
+        </center><br><br>
+        <div class="ref">
+            <span class="reference">
+                Police Station : 100 </span>
+            &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<span
+                class="reference">Fire Station : 101</span>
+        </div>
+        <p class="reference2"> Disaster agencies : 108</p>
+        <div id="secretDiv" hidden>
+            <%=locals.id%>
+        </div>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const myid = document.getElementById('secretDiv').textContent;
+        localStorage.setItem("myid",`${myid}`)
+
+        const disasterTypeButton = document.getElementById('disasterTypeButton');
+        const selectedValue = localStorage.getItem('selectedValue');
+
+        if (selectedValue === null) {
+            // Set the default text if no value is in localStorage
+            disasterTypeButton.textContent = 'Disaster Types';
+        } else {
+            // Use the value from localStorage
+            disasterTypeButton.textContent = selectedValue;
+        }
+    });
+
+    // Clear the selectedValue from localStorage when the page is closed
+    window.addEventListener('beforeunload', function () {
+        localStorage.removeItem('selectedValue');
+    });
+
+
+</script>
+
+</html>

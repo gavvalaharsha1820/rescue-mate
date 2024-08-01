@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body
+    {
+        background: linear-gradient(155deg, #8be9f1 10%, #cb7def 90%);
+    }
+    .head{
+        height: 100px;
+        background-color: lightblue;
+        border-radius: 5px 5px 5px 5px;
+        display: flex;
+        background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+        
+    }
+    .logo{
+        height: 90px;
+        width: 90px;
+        margin-left: 10px;
+        margin-top: 5px;
+        border-radius: 45px;
+    }
+    .dis{
+        margin-right: 10%;
+        padding: 3px;
+        padding-left: 2%;
+        margin-top: 20px;
+        font-size: 50px;
+    } 
+    .user{
+        height: 60px;
+        width: 60px;
+        margin-left: 450px;
+        margin-top: 23px;
+        border-radius: 45px;
+    }
+    #seld{
+        margin: auto;
+        font-size: 20px;
+        position: block;
+    }
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+    .victim{
+        height: 150px;
+        width: 150px;
+        border-radius: 76px;
+        background-color: rgb(253, 10, 10);
+        font-size: 20px;
+        margin-left: 30px;
+        margin-top: 50px;
+        font-size: 30px;
+        border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+    }
+    .reference{
+        text-align: left;
+        font-size: 30px;
+        margin-left: 50px;
+        position: block;
+        margin-top: 20px;
+    }
+    .reference2{
+        text-align: center;
+        font-size: 30px;
+    }
+   
+    .victim:hover{
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  background-color: rgba(6, 239, 6, 0.7);
+  cursor: grabbing;
+}
+@media (max-width: 768px) {
+    body{
+        width: 100%;
+    }
+            .head {
+                align-items: center;
+                padding: 0px;
+                margin: 0px;
+            }
+            .logo{
+                width: 60px;
+                height: 60px;
+            }
+            .dis{
+                font-size: 30px;
+                margin-right: 0px;
+            }
+            .user {
+                margin-top: 5px;
+               margin-left: 0px;
+                  
+            }
+            .alert{
+                display: flex;
+                flex-direction: column;
+            }
+            .victim {
+                margin-left: 30%;
+                margin-top: 20px;
+                align-content: center;
+            }
+            .reference  {
+                font-size: 15px;
+                text-align: center;
+                margin-bottom: 0px;
+                display: block;
+                margin-left: auto;
+            }
+            .reference2 {
+                font-size: 15px; 
+                display: block;
+                margin-left: auto;
+            }
+    #seld{
+        font-size: 15px;
+    }
+    
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+    
+</style>
+<body>
+    <div class="main">
+        <div class="head">
+            <img src="logo.jpg" alt="logo" class="logo">
+            <h1 class="dis">Disater Management</h1> 
+            <img src="user_icon.jpg" alt="user" class="user" onclick="window.location.href='profile.html';"> 
+        </div>
+    </div><br>
+    <div class="s">
+        <p id="seld">Disaster Selected : </p><br>
+        <p id="seld">Trusted Phone No : </p><br>
+        <p id="seld">Disaster Office : </p><br>
+        <p id="seld">Police : </p>
+    </div>
+    <center>
+    <div class="alert">
+        <button class="victim" onclick="window.location.href='alert_page.html';" >
+            victim
+        </button>
+        <button class="victim" onclick="window.location.href='alert_page.html';" >
+            Inform
+        </button>
+    </div></center><br><br>
+    <div class="ref">
+        <span class="reference">
+            Police Station : 100 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Fire Station : 101
+        </div>
+        <p class="reference2"> Disaster agencies : 108</p>
+
+</div>    
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+            background-color: #e4ebec;
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        .ground {
+            background-color: #ffffff;
+            border-style: inset;
+            border-radius: 30px;
+            padding: 20px;
+        }
+        
+        .back {
+            width: 100px;
+            transition: all 0.2s ease;
+            background-color: lightblue;
+            background-image: linear-gradient(#0dccea, #0d70ea);
+            border: 0;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            font-family: Montserrat, sans-serif;
+            font-size: .9em;
+            margin: 5px;
+            padding: 10px 15px;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            display: block;
+            margin: auto;
+            margin-top: 20px;
+        }
+        
+        .back:hover {
+            cursor: pointer;
+            transform: scale(0.96);
+        }
+        
+        .top {
+            background-color: rgb(224, 214, 214);
+            border-radius: 10px;
+            width: 100%;
+            display: block;
+            margin: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .logo1 {
+            width: 20px;
+            border-radius: 50%;
+        }
+        
+        #user {
+            text-align: left;
+            font-size: 1.2em;
+            margin-left: 20px;
+        }
+        
+        #edit {
+            text-align: right;
+            margin-top: 20px;
+            color: black;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        
+        #type {
+            text-align: left;
+            font-size: 0.8em;
+            margin-left: 20px;
+        }
+        
+        .details {
+            margin-top: 20px;
+        }
+        
+        .logo {
+            width: 250px;
+            border-radius: 50%;
+            display: block;
+            margin: auto;
+        }
+        
+        #line {
+            margin-left: -20px;
+        }
+        
+        @media screen and (max-width: 600px) {
+            #user, #edit, #type {
+                display: block;
+                margin: 10px 20px;
+            }
+            /* Override to display trusted phone numbers on the same line */
+            #stored-ephone1, #stored-ephone2 {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p id="user"><img class="logo1" src="user_icon.jpg" alt="User DP">  USERNAME</p>
+    <p id="edit" onclick="window.location.href='editpage.html';">EDIT</p>
+    <!-- <p id="type">TYPE : USER</p><br><br><br> -->
+    <div class="details">
+        <p id="name1"><hr id="line">
+            <div class="ground">
+                <div>
+                    <p>
+                        <center><img class="logo" src="user_icon.jpg" alt="User DP"></center>
+                    </p>
+                </div>
+                <br>
+                <br>
+                <strong>Name</strong> <span id="stored-username"><%=locals.username%></span><br><br>
+                <strong>Gender</strong> <span id="stored-gender"><%=locals.gend%></span><br><br>
+                <strong>Aadhar</strong> <span id="stored-aadhar"><%=locals.adhar%></span><br><br>
+                <strong>Phone </strong> <span id="stored-phone"><%=locals.mobile%></span><br><br>
+                <strong>Trusted</strong> <span id="stored-ephone1"><%=locals.Trutedp%></span><br><br>
+                <strong>Email:</strong> <span id="stored-email"><%=locals.Mail%></span><br><br>
+                <strong>Village:</strong> <span id="stored-village"><%=locals.Village%></span><br><br>
+                <strong>Pincode:</strong> <span id="stored-pincode"><%=locals.Pincode%></span><br><br>
+               
+            </div>
+        </div>
+       <form method="post" action="/allow"><button class="back" >Back<br></button></form>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+
+        document.getElementById('edit-button').addEventListener('click', function () {
+ 
+            window.location.href = 'editpage.html';
+        });
+    </script>
+ 
+</body>
+</html>

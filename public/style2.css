@@ -1,0 +1,11 @@
+input
+{
+    padding: 10px;
+    margin: 20px;
+    margin-top:50px;
+    transition: all 0.2s ease;
+}
+input:active
+{
+    transform: scale(0.96);
+}

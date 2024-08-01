@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Verification</title>
+    <style>
+        body {
+    background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+    font-family: Arial, sans-serif;
+    background-color: #e4ebec;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: outset;
+    border-width: 3px;
+    border-right-width: 15px;
+    background-color: #fcfbf7; /* Light beige */
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="phone"],
+input[type="date"] {
+    width: calc(100% - 22px); /* Adjusted width */
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px 0; /* Adjusted padding */
+    border: none;
+    border-radius: 4px;
+    background-color: skyblue;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #4eade6; /* Darker shade of skyblue */
+}
+
+.error-message {
+    color: #ff0000;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 90%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>OTP Verification</h1>
+    <form id="otpForm" method="post" action="/otp">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" name="userOtp" placeholder="Enter OTP" required>
+        <button type="submit">Verify OTP</button>
+    </form>
+</body>
+</html>

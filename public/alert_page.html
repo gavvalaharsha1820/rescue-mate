@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+           background-image:  linear-gradient(115deg, #b0e3e8 10%, #d9b3eb 90%);
+        }
+
+        .main {
+           
+            max-width: 100%;
+        }
+
+        .head {
+            height: 100px;
+            background-color: rgb(81, 196, 234);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .logo {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .dis {
+            margin-right: 0px;
+            font-size: 30px;
+        }
+
+        .user {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+        form .back
+        {
+            width: 100px;
+            transition: all 0.2 ease;
+            background-color: lightblue;
+            background-image: linear-gradient(#0dccea, #0d70ea);
+            border: 0;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, .3) 0 5px 15px;
+            box-sizing: border-box;
+            color: #fff;
+            cursor: pointer;
+            font-family: Montserrat,sans-serif;
+            font-size: .9em;
+            margin: 5px;
+            padding: 10px 15px;
+            text-align: center;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        form .back:hover {
+            cursor: pointer;
+            transform: scale(0.96);
+        }
+
+        .sent {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .sent, h2 {
+            text-align: center;
+        }
+        .design
+        {
+            background-color: aliceblue;
+            width: 500px;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        #all{
+            font-size: 1.2em;
+        }
+        .button,a {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 50px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  width: 200px;
+}
+
+a:focus,button:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+a:hover,button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+a:active,button:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.button
+{
+    width: 300px;
+}
+        @media (max-width: 600px) {
+            .head {
+                /* flex-direction: column;
+                align-items: center;
+                text-align: center; */
+                align-items: center;
+                padding: 0px;
+                margin: 0px;
+            }
+            
+            .logo{
+                width: 60px;
+                height: 60px;
+            }
+            .dis{
+                font-size: 31px;
+                margin-right: 0px;
+               
+            }
+            .user {
+                margin-top: 5px;
+               margin-left: 0px;
+            }
+            .design
+            {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="head">
+            <img src="logo.jpg" alt="logo" class="logo"> 
+            <h1 class="dis"> &nbsp;Disaster Management</h1>
+            <img src="user_icon.jpg" alt="user" class="user">
+        </div>
+    </div><br><br>
+    <center>
+    <div class="design">
+        <span>
+    <h1 class="sent">
+        Alert sent !!!!
+    </h1>
+    <h2>All is well, everything is going to be alright.</h2></span>
+    </div>
+    <br><br><br>
+    <div class="call">
+        <a class="a" id="all" href="tel:+919381233467">Call</a><br><br>
+        <a class="a" id="all" href="sms:+919398009304,+919381233467,+917569592272&body=I am in disaster please try to contact me and also i need some help from your side">SMS</a><br><br>
+        <button class="button" id="shareLocationButton">Share My Location via Email</button>
+      </div>
+    </center>
+      <form method="post" action="/allow"><button class="back" onclick="window.location.href='home.html';">Back<br></button></form>
+</body>
+<script>
+  document.getElementById('shareLocationButton').addEventListener('click', function() {
+      const recipientEmails = [
+          'anushajanga036@gmail.com',
+          'bharathbrave99@gmail.com',
+          'lakshmimudimela24@gmail.com',
+          'nsarathreddyavm@gmail.com'
+      ];
+
+      const subject = 'My Current Location';
+      let message = '';
+
+      // Attempt to get the user's location.
+      if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+              function(position) {
+                  const latitude = position.coords.latitude;
+                  const longitude = position.coords.longitude;
+                  message = `My current location is https://maps.google.com/?q=${latitude},${longitude}`;
+                  sendEmail(recipientEmails, subject, message);
+              },
+              function(error) {
+                  console.error('Error getting location:', error);
+                  promptForLocation();
+              },
+              { timeout: 10000 } // Set a timeout in milliseconds
+          );
+      } else {
+          promptForLocation();
+      }
+
+      // Function to send the email.
+      function sendEmail(recipients, emailSubject, emailMessage) {
+          const emailTo = recipients.join(',');
+          const emailLink = `mailto:${encodeURIComponent(emailTo)}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailMessage)}`;
+          window.location.href = emailLink;
+      }
+
+      // Function to prompt the user for manual location entry.
+      function promptForLocation() {
+          const manualLocation = prompt('Geolocation failed. Please enter your location:');
+          if (manualLocation !== null) {
+              message = `My current location is ${manualLocation}`;
+              sendEmail(recipientEmails, subject, message);
+          }
+      }
+  });
+</script>

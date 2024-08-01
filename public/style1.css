@@ -1,0 +1,15 @@
+.dropdown{
+  text-align: center;
+
+}
+.dropdown h2{
+  color:blue;
+
+
+}
+.dropdown button{
+  background-color: white;
+  color: #000;
+  border: 2px solid #f00909;
+
+}
